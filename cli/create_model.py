@@ -1,6 +1,7 @@
 # cli/create_model.py
 import os
 import click
+import json
 
 @click.group()
 def create_model_command():
@@ -10,7 +11,7 @@ def create_model_command():
 @click.argument("model_name")
 def create_model(model_name):
     """
-    Create a new model in the database.
+    Create a new model in the Frappe database.
 
     Example:
     python manage.py create-model User
@@ -28,7 +29,10 @@ def create_model(model_name):
         field_type = click.prompt("Field Type (e.g., Data, Int, ...)")
         label = click.prompt("Field Label")
         is_required = click.confirm("Is this field required?", default=True)
-        
+        is_all = input("Are these all your desired fields? (y/n)")
+        if is_all ==  "y":
+            break
+    
         fields.append({
             "fieldname": field_name,
             "fieldtype": field_type,
@@ -45,8 +49,13 @@ def create_model(model_name):
         user_file.write(f"        self.doc = _dict(data)\n")
         user_file.write(f"        self.doc.doctype = '{model_name}'\n")
 
-    # Create User.json
+    # Create User.json with user-defined fields
+    json_data = {
+        "fields": fields
+    }
+
     with open(os.path.join(model_directory, f"{model_name}.json"), "w") as json_file:
+        json_file.write(json.dumps(json_data, indent=4))
         json_file.write("{\n")
         json_file.write("    \"fields\": [\n")
         json_file.write("        {\n")
