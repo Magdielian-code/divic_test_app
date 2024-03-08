@@ -19,9 +19,18 @@ def create_model(model_name):
     model_directory = os.path.join("models", model_name)
     os.makedirs(model_directory, exist_ok=True)
 
-    # Prompt user for fields
-    click.echo("Enter the fields for the model (Press Enter when done):")
-    fields = []
+    # Load existing JSON data if file already exists
+    json_file_path = os.path.join(model_directory, f"{model_name}.json")
+    if os.path.exists(json_file_path):
+        with open(json_file_path, "r") as existing_json_file:
+            existing_data = json.load(existing_json_file)
+            existing_fields = existing_data.get("fields", [])
+    else:
+        existing_fields = []
+
+    # Prompt user for additional fields
+    click.echo("Enter the additional fields for the model (Press Enter when done):")
+    fields = existing_fields.copy()
     while True:
         field_name = click.prompt("Field Name (Press Enter to finish)")
         if not field_name:
@@ -29,10 +38,10 @@ def create_model(model_name):
         field_type = click.prompt("Field Type (e.g., Data, Int, ...)")
         label = click.prompt("Field Label")
         is_required = click.confirm("Is this field required?", default=True)
-        is_all = input("Are these all your desired fields? (y/n)")
-        if is_all ==  "y":
+        is_all = input("Are these all your desired fields? (y/n). ")
+        if is_all == "y":
             break
-    
+
         fields.append({
             "fieldname": field_name,
             "fieldtype": field_type,
@@ -49,13 +58,13 @@ def create_model(model_name):
         user_file.write(f"        self.doc = _dict(data)\n")
         user_file.write(f"        self.doc.doctype = '{model_name}'\n")
 
-    # Create User.json with user-defined fields
+    # Update User.json with the merged list of fields
     json_data = {
         "fields": fields
     }
 
-    with open(os.path.join(model_directory, f"{model_name}.json"), "w") as json_file:
-        json_file.write(json.dumps(json_data, indent=4))
+    with open(json_file_path, "w") as json_file:
+        json.dump(json_data, json_file, indent=4)
         json_file.write("{\n")
         json_file.write("    \"fields\": [\n")
         json_file.write("        {\n")
