@@ -111,3 +111,37 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ```
 
 Adjust the content based on your specific project structure and requirements.
+
+
+
+CLI for Model Creation
+To create a new model in the database, use the following command:
+
+bash
+Copy code
+python manage.py create-model <model_name>
+Replace <model_name> with the desired name of the model. For example, to create a model named "User," run:
+
+bash
+Copy code
+python manage.py create-model User
+On execution, a new directory models/User will be created containing:
+
+User.py: A Python class representing the model and extending a base Document class.
+User.json: Model definition file, specifying field types and required fields.
+Feel free to customize the structure of the model and its corresponding JSON file in the created directory.
+
+Contributing
+Feel free to contribute to the development of this application by forking the repository and creating pull requests.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+vbnet
+Copy code
+
+This structure separates concerns and improves code organization. Each file now has a specific purpose, making it easier to maintain and understand. Adjust the code and structure based on your specific needs.
+
+
+
+
