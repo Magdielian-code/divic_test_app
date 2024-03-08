@@ -18,6 +18,24 @@ def create_model(model_name):
     model_directory = os.path.join("models", model_name)
     os.makedirs(model_directory, exist_ok=True)
 
+    # Prompt user for fields
+    click.echo("Enter the fields for the model (Press Enter when done):")
+    fields = []
+    while True:
+        field_name = click.prompt("Field Name (Press Enter to finish)")
+        if not field_name:
+            break
+        field_type = click.prompt("Field Type (e.g., Data, Int, ...)")
+        label = click.prompt("Field Label")
+        is_required = click.confirm("Is this field required?", default=True)
+        
+        fields.append({
+            "fieldname": field_name,
+            "fieldtype": field_type,
+            "label": label,
+            "reqd": int(is_required)
+        })
+
     # Create User.py
     with open(os.path.join(model_directory, f"{model_name}.py"), "w") as user_file:
         user_file.write(f"from frappe import _dict, get_meta\n\n")
@@ -27,7 +45,7 @@ def create_model(model_name):
         user_file.write(f"        self.doc = _dict(data)\n")
         user_file.write(f"        self.doc.doctype = '{model_name}'\n")
 
-    # Create User.json (you can customize the model structure here)
+    # Create User.json
     with open(os.path.join(model_directory, f"{model_name}.json"), "w") as json_file:
         json_file.write("{\n")
         json_file.write("    \"fields\": [\n")
