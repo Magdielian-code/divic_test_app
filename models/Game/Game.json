@@ -1,0 +1,10 @@
+{
+    "fields": [
+        {
+            "fieldname": "house",
+            "fieldtype": "int",
+            "label": "Houser",
+            "reqd": 1
+        }
+    ]
+}

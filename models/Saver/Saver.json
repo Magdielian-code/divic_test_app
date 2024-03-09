@@ -1,0 +1,22 @@
+{
+    "fields": [
+        {
+            "fieldname": "Money",
+            "fieldtype": "int",
+            "label": "money",
+            "reqd": 1
+        },
+        {
+            "fieldname": "EXpenses",
+            "fieldtype": "int",
+            "label": "expenses",
+            "reqd": 1
+        },
+        {
+            "fieldname": "Profit",
+            "fieldtype": "int",
+            "label": "profit",
+            "reqd": 1
+        }
+    ]
+}

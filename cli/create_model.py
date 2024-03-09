@@ -28,7 +28,7 @@ def create_model(model_name):
     else:
         existing_fields = []
 
-    # Prompt user for additional fields
+    # Combine existing fields and prompt user for additional fields
     click.echo("Enter the additional fields for the model (Press Enter when done):")
     fields = existing_fields.copy()
     while True:
@@ -42,12 +42,12 @@ def create_model(model_name):
         if is_all.lower() == "y":
             break
 
-    fields.append({
-        "fieldname": field_name,
-        "fieldtype": field_type,
-        "label": label,
-        "reqd": int(is_required)
-    })
+        fields.append({
+            "fieldname": field_name,
+            "fieldtype": field_type,
+            "label": label,
+            "reqd": int(is_required)
+        })
 
     # Create User.py
     with open(os.path.join(model_directory, f"{model_name}.py"), "w") as user_file:
