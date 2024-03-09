@@ -1,0 +1,16 @@
+{
+    "fields": [
+        {
+            "fieldname": "save",
+            "fieldtype": "data",
+            "label": "save",
+            "reqd": 1
+        },
+        {
+            "fieldname": "Debt",
+            "fieldtype": "int",
+            "label": "debt",
+            "reqd": 1
+        }
+    ]
+}

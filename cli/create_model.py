@@ -42,12 +42,12 @@ def create_model(model_name):
         if is_all.lower() == "y":
             break
 
-        fields.append({
-            "fieldname": field_name,
-            "fieldtype": field_type,
-            "label": label,
-            "reqd": int(is_required)
-        })
+    fields.append({
+        "fieldname": field_name,
+        "fieldtype": field_type,
+        "label": label,
+        "reqd": int(is_required)
+    })
 
     # Create User.py
     with open(os.path.join(model_directory, f"{model_name}.py"), "w") as user_file:
@@ -60,7 +60,7 @@ def create_model(model_name):
 
     # Update User.json with the merged list of fields
     json_data = {
-        "fields": fields
+    "fields": fields
     }
 
     with open(json_file_path, "w") as json_file:
