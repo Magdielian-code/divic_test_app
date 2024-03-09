@@ -1,0 +1,16 @@
+{
+    "fields": [
+        {
+            "fieldname": "tove",
+            "fieldtype": "Data",
+            "label": "data",
+            "reqd": 1
+        },
+        {
+            "fieldname": "biter",
+            "fieldtype": "int",
+            "label": "biter",
+            "reqd": 1
+        }
+    ]
+}

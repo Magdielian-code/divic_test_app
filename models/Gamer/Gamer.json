@@ -1,5 +1,18 @@
 {
-    "fields": []
+    "fields": [
+        {
+            "fieldname": "Buyer",
+            "fieldtype": "int",
+            "label": "buyer",
+            "reqd": 1
+        },
+        {
+            "fieldname": "Seller",
+            "fieldtype": "int",
+            "label": "seller",
+            "reqd": 1
+        }
+    ]
 }{
     "fields": [
         {
