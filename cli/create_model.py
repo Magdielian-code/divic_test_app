@@ -38,8 +38,8 @@ def create_model(model_name):
         field_type = click.prompt("Field Type (e.g., Data, Int, ...)")
         label = click.prompt("Field Label")
         is_required = click.confirm("Is this field required?", default=True)
-        is_all = input("Are these all your desired fields? (y/n). ")
-        if is_all == "y":
+        is_all = click.prompt("Are these all your desired fields? (y/n). ")
+        if is_all.lower() == "y":
             break
 
         fields.append({
