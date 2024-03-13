@@ -1,0 +1,11 @@
+{
+  "name": "Happyfddd",
+  "fields": [
+    {
+      "field_name": "fd",
+      "field_type": "string",
+      "required": true,
+      "unique": true
+    }
+  ]
+}

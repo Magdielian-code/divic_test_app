@@ -1,0 +1,17 @@
+{
+  "name": "Happy",
+  "fields": [
+    {
+      "field_name": "Name",
+      "field_type": "string",
+      "required": true,
+      "unique": false
+    },
+    {
+      "field_name": "age",
+      "field_type": "integer",
+      "required": false,
+      "unique": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "field_name": "Name",
+    "field_type": "string",
+    "required": true,
+    "unique": false
+  }
+]

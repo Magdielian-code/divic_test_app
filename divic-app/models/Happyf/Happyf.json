@@ -1,0 +1,23 @@
+{
+  "name": "Happyf",
+  "fields": [
+    {
+      "field_name": "test",
+      "field_type": "string",
+      "required": true,
+      "unique": true
+    },
+    {
+      "field_name": "kdsf_sdflkj_sdf",
+      "field_type": "integer",
+      "required": true,
+      "unique": false
+    },
+    {
+      "field_name": "kfdsi_kkjdsfi_._dfs",
+      "field_type": "string",
+      "required": false,
+      "unique": true
+    }
+  ]
+}

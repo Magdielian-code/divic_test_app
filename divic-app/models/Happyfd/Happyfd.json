@@ -1,0 +1,11 @@
+{
+  "name": "Happyfd",
+  "fields": [
+    {
+      "field_name": "sdf",
+      "field_type": "string",
+      "required": true,
+      "unique": true
+    }
+  ]
+}
