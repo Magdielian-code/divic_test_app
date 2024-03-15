@@ -5,7 +5,6 @@ import json
 import click
 from database.create_model import create_table
 
-
 def create_model_prompt(model_name):
     """Prompt the user for information about a new model."""
     model_dir = f"models/{model_name}"
